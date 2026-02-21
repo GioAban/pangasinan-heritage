@@ -1,9 +1,7 @@
 "use client";
-
 import useHashPath from "@/hooks/useHashPath";
 import Link from "next/link";
 import { type ReactNode } from "react";
-
 const ClientLink = ({
   children,
   href,
@@ -13,9 +11,8 @@ const ClientLink = ({
   href: string;
   classNames?: string;
 }) => {
-  const hashPathId = useHashPath(); // example: "about"
-  const hashHref = href.replace("#", ""); // remove #
-
+  const hashPathId = useHashPath(); 
+  const hashHref = href.replace("#", ""); 
   const isActive = hashPathId === hashHref;
   console.log({ hashPathId, hashHref });
   return (
@@ -27,5 +24,4 @@ const ClientLink = ({
     </Link>
   );
 };
-
 export default ClientLink;

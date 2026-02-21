@@ -1,24 +1,19 @@
 "use client";
-
 import { useRef } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Article } from "@/types";
 import { Card } from "../molecules/card";
 import { CarouselButton } from "../atoms/carousel-button";
-
 export default function NewsCarousel({ articles }: { articles: Article[] }) {
   const featured = articles[0];
   const listNews = articles.slice(1);
   const containerRef = useRef<HTMLDivElement>(null);
-
   const basePath = "/pangasinan-heritage";
-
   const getPath = (path: string) => {
     const cleanPath = path.startsWith("/") ? path.slice(1) : path;
     return `${basePath}/${cleanPath}`;
   };
-
   const scroll = (direction: "left" | "right") => {
     if (containerRef.current) {
       const { scrollLeft, clientWidth } = containerRef.current;
@@ -29,12 +24,9 @@ export default function NewsCarousel({ articles }: { articles: Article[] }) {
       containerRef.current.scrollTo({ left: scrollTo, behavior: "smooth" });
     }
   };
-
   if (!featured) return null;
-
   return (
     <div className="flex flex-col bg-white">
-      {/* --- FEATURED NEWS --- */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -60,17 +52,13 @@ export default function NewsCarousel({ articles }: { articles: Article[] }) {
           </p>
         </div>
       </motion.div>
-
-      {/* --- CAROUSEL SLIDER --- */}
       <div className="group relative">
         <div className="absolute -left-5 top-1/2 z-20 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100">
           <CarouselButton direction="left" onClick={() => scroll("left")} />
         </div>
-
         <div className="absolute -right-5 top-1/2 z-20 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100">
           <CarouselButton direction="right" onClick={() => scroll("right")} />
         </div>
-
         <div
           ref={containerRef}
           className="scrollbar-hide flex gap-6 overflow-x-hidden scroll-smooth pb-10"
@@ -82,7 +70,6 @@ export default function NewsCarousel({ articles }: { articles: Article[] }) {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ delay: idx * 0.1 }}
             >
-              {/* --- REUSABLE CARD WRAPPER --- */}
               <Card>
                 <div className="relative mb-4 h-44 w-full overflow-hidden rounded-xl bg-slate-100">
                   <Image

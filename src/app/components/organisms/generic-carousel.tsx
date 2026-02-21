@@ -1,23 +1,19 @@
 "use client";
 import { useRef } from "react";
 import { CarouselButton } from "../atoms/carousel-button";
-
 interface Props {
   title: string;
   badge: string;
-  children: React.ReactNode; // Dito papasok ang kahit anong list of cards
+  children: React.ReactNode;
 }
-
 export default function GenericCarousel({ title, badge, children }: Props) {
   const scrollRef = useRef<HTMLDivElement>(null);
-
   const scroll = (dir: "left" | "right") => {
     if (scrollRef.current) {
       const offset = dir === "left" ? -400 : 400;
       scrollRef.current.scrollBy({ left: offset, behavior: "smooth" });
     }
   };
-
   return (
     <section className="py-12">
       <div className="mb-8 flex items-end justify-between">

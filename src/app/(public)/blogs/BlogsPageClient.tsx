@@ -12,9 +12,7 @@ export default function BlogsPageClient({ articles }: { articles: Article[] }) {
     const cleanPath = path.startsWith("/") ? path.slice(1) : path;
     return `${basePath}/${cleanPath}`;
   };
-
   if (!featured) return null;
-
   return (
     <div className="space-y-32">
       <motion.div
@@ -32,7 +30,6 @@ export default function BlogsPageClient({ articles }: { articles: Article[] }) {
           unoptimized
         />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
-
         <div className="absolute bottom-0 left-0 w-full p-8 lg:p-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -86,7 +83,6 @@ export default function BlogsPageClient({ articles }: { articles: Article[] }) {
                   <h4 className="text-2xl font-black leading-tight tracking-tight text-slate-900 transition-colors group-hover:text-blue-600 lg:text-3xl">
                     {article.title}
                   </h4>
-
                   <p className="line-clamp-2 leading-relaxed text-slate-500">
                     {article.description}
                   </p>

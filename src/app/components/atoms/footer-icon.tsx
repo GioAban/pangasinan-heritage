@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { ReactNode } from "react";
-
 export const FooterIcon = ({
   href,
   children,

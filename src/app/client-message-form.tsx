@@ -1,28 +1,22 @@
 "use client";
-
 import { useRef, useTransition } from "react";
 import Button from "./components/atoms/button";
-
 const ClientMessageForm = () => {
   const formRef = useRef<HTMLFormElement>(null);
   const [isPending, startTransition] = useTransition();
-
   const inputClasses = `
     w-full px-5 py-4 rounded-xl border border-slate-200 bg-slate-50/50 
     text-slate-900 outline-none transition-all duration-300
     focus:border-[#124D9B] focus:bg-white focus:ring-4 focus:ring-[#124D9B]/10
     placeholder:text-slate-400 font-medium
   `;
-
   const labelClasses =
     "text-xs font-black uppercase tracking-widest text-slate-500 mb-2 ml-1";
-
   return (
     <form
       ref={formRef}
       action={(formData: FormData) => {
         startTransition(async () => {
-          // Simulate submit
           await new Promise((resolve) => setTimeout(resolve, 2000));
           formRef.current?.reset();
         });
@@ -30,7 +24,6 @@ const ClientMessageForm = () => {
       className="flex w-full flex-col gap-6"
     >
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-        {/* NAME */}
         <div className="flex flex-col">
           <label htmlFor="name" className={labelClasses}>
             Full Name
@@ -44,8 +37,6 @@ const ClientMessageForm = () => {
             className={inputClasses}
           />
         </div>
-
-        {/* EMAIL */}
         <div className="flex flex-col">
           <label htmlFor="email" className={labelClasses}>
             Email Address
@@ -60,8 +51,6 @@ const ClientMessageForm = () => {
           />
         </div>
       </div>
-
-      {/* MESSAGE */}
       <div className="flex flex-col">
         <label htmlFor="message" className={labelClasses}>
           Your Message
@@ -74,8 +63,6 @@ const ClientMessageForm = () => {
           className={`${inputClasses} resize-none`}
         ></textarea>
       </div>
-
-      {/* ATTACHMENT - Styled nicely */}
       <div className="flex flex-col">
         <label htmlFor="attachment" className={labelClasses}>
           Attachments (Optional)
@@ -85,10 +72,8 @@ const ClientMessageForm = () => {
             type="file"
             name="attachment"
             id="attachment"
-            className="hidden" // Itago ang default
-            onChange={(e) => {
-              // Pwedeng lagyan ng logic para ipakita ang filename
-            }}
+            className="hidden"
+            onChange={(e) => {}}
           />
           <label
             htmlFor="attachment"
@@ -100,8 +85,6 @@ const ClientMessageForm = () => {
           </label>
         </div>
       </div>
-
-      {/* SUBMIT BUTTON - Gamit ang Atom mo */}
       <div className="mt-4 flex flex-col">
         <Button
           variant="solid"
@@ -113,5 +96,4 @@ const ClientMessageForm = () => {
     </form>
   );
 };
-
 export default ClientMessageForm;

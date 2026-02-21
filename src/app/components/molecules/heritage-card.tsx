@@ -1,13 +1,10 @@
 import Image from "next/image";
 import { Spot } from "@/types";
-
 export const HeritageCard = ({ spot }: { spot: Spot }) => {
   const basePath = "/pangasinan-heritage";
-  // Sinisigurado na laging may base path para sa GitHub Pages
   const imageSrc = spot.image.startsWith("http")
     ? spot.image
     : `${basePath}/${spot.image.replace(/^\//, "")}`;
-
   return (
     <div className="group w-80 flex-shrink-0">
       <div className="overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm transition-all hover:shadow-xl">
@@ -17,7 +14,7 @@ export const HeritageCard = ({ spot }: { spot: Spot }) => {
             alt={spot.title}
             fill
             className="object-cover transition-transform duration-500 group-hover:scale-110"
-            unoptimized // Mas safe para sa static export sa GitHub Pages
+            unoptimized
           />
           <div className="absolute left-4 top-4">
             <span className="rounded-full bg-white/90 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-blue-600 shadow-sm backdrop-blur">

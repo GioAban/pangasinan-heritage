@@ -4,11 +4,9 @@ import Container from "../../container";
 import Button from "../atoms/button";
 import Link from "next/link";
 import SeePangasinanIcon from "../atoms/see-pagasinan-icon";
-
 const Header = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
-
   useEffect(() => {
     let timeoutId: NodeJS.Timeout;
     const handleScroll = () => {
@@ -22,14 +20,12 @@ const Header = () => {
       clearTimeout(timeoutId);
       timeoutId = setTimeout(() => setIsVisible(true), 150);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
       clearTimeout(timeoutId);
     };
   }, []);
-
   return (
     <header
       className={`fixed top-0 z-50 w-full transition-all duration-500 ease-in-out ${
@@ -63,9 +59,7 @@ const Header = () => {
             </ul>
           </nav>
         </div>
-
         <div className="flex items-center gap-5">
-          {/* BUTTON: Nanatiling malaki at readable */}
           <Button
             href="/contact"
             variant="solid"
@@ -78,5 +72,4 @@ const Header = () => {
     </header>
   );
 };
-
 export default Header;

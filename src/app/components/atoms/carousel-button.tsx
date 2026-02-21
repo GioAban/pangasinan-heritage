@@ -1,10 +1,8 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
-
 interface Props {
   direction: "left" | "right";
   onClick: () => void;
 }
-
 export const CarouselButton = ({ direction, onClick }: Props) => (
   <button
     onClick={onClick}

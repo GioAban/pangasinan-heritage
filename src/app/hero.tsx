@@ -7,16 +7,13 @@ import Image from "next/image";
 import image1 from "../../public/images/cover_page/hundred_island.jpg";
 import image2 from "../../public/images/cover_page/bolinao_light_house.jpg";
 import image3 from "../../public/images/cover_page/hostrping.jpg";
-
 const images = [image1, image2, image3];
-
 const HomeHero = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 6000);
+    }, 5000);
     return () => clearInterval(timer);
   }, []);
   return (
