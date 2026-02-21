@@ -11,7 +11,7 @@
     "json-server": "json-server --watch db.json --port 5600",
     "dev:all": "concurrently \"json-server db.json --port 5600\" \"next dev\"",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d out -t true"
+    "deploy": "touch out/.nojekyll && gh-pages -d out -t true"
   },
   "dependencies": {
     "framer-motion": "^12.23.22",
